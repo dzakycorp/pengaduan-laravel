@@ -1,0 +1,78 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\models\Pengaduan;
+
+class PengaduanController extends Controller
+{
+    function index(){
+        $judul ="selamat datang";
+        $pengaduan = pengaduan::All();
+        $pengaduan = DB::table('pengaduan')->get();
+
+        return view('home',['Judul'=>$judul,'pengaduan'=>$pengaduan]);
+    }
+
+
+    function proses_isi_pengaduan(){
+        $tampil = "dataaaaaaaaaa";
+
+        return view('isi_pengaduan',['tampil'=>$tampil]);
+
+
+    }
+
+
+    function proses_tambah_pengaduan(Request $request){
+        //validasi
+        $nama_foto=$request->foto->getClientoriginalName();
+        $request ->validate([
+            'isi_laporan' => 'required|min:5'
+        ]);
+
+        $request->foto->storeAs('public/image',$nama_foto);
+
+
+        $isi_pengaduan = $request->isi_laporan;
+        $pengaduan = DB::table('pengaduan')->insert([
+            'tgl_pengaduan' => date('Y-m-d'),
+            'nik' => '2',
+            'isi_laporan' => $isi_pengaduan,
+            'foto' => $request->foto->getClientoriginalName(),
+            'status' => 'proses'
+        ]);
+
+        return redirect('/home');
+    }
+
+    function hapus($id){
+        DB::table('pengaduan')->where('id_pengaduan','=',$id)->delete();
+        return redirect()->back();
+    }
+
+    function detail($id){
+        $pengaduan = DB::table('pengaduan')->where('id_pengaduan','=', $id )->get();
+        return view('/detail',['pengaduan'=> $pengaduan]);  
+
+     }
+
+    function update($id){
+        $pengaduan = DB::table('pengaduan')->where('id_pengaduan','=', $id )->first();
+        return view('/update',['pengaduan'=> $pengaduan]);
+    }
+
+   
+
+    function proses_update(request $request){
+        $isi_pengaduan = $request->isi_laporan;
+        $pengaduan = DB::table('pengaduan')->where('id_pengaduan')->update([
+            'isi_laporan' => $isi_pengaduan
+
+        ]);
+        return redirect('/home');
+    }
+
+}
