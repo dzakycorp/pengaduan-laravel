@@ -14,7 +14,7 @@
 <h2 style= text-align:center>update laporan</h2>
 <br>
 <div class="container">
-  <form action="{{url('/update/$pengaduan->id_pengaduan')}}" method="post" enctype="multipart/form-data" >
+  <form action="{{url('/update',$pengaduan->id_pengaduan)}}" method="post" enctype="multipart/form-data" >
     @method("POST")
     @csrf 
     <div class="mb-3">

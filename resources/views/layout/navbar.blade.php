@@ -48,7 +48,7 @@
         <a class="nav-link active" href="data-petugas" tabindex="-1" aria-disabled="true"><b>data petugas</b></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="/about" tabindex="-1" aria-disabled="true"><b>logout</b></a>
+        <a class="nav-link active" href="/logout" tabindex="-1" aria-disabled="true"><b>logout</b></a>
     </li>
 {{-- @endauth --}}
 

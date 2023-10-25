@@ -63,12 +63,13 @@ class PengaduanController extends Controller
         $pengaduan = DB::table('pengaduan')->where('id_pengaduan','=', $id )->first();
         return view('/update',['pengaduan'=> $pengaduan]);
     }
+    
 
    
 
     function proses_update(request $request){
         $isi_pengaduan = $request->isi_laporan;
-        $pengaduan = DB::table('pengaduan')->where('id_pengaduan')->update([
+        $pengaduan = DB::table('pengaduan')->where('id_pengaduan',$request->id)->update([
             'isi_laporan' => $isi_pengaduan
 
         ]);

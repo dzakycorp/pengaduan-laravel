@@ -4,25 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 class PetugasController extends Controller
 {
     function daftar_petugas(request $request){
 
-        $nama = $request->nama;
-        $user = $request->un;
-        $pass = $request->pass;
-        $telp = $request->telp;
-        $level =$request->level;
+        $nama_petugas = $request->nama_petugas;
+        $username = $request->username;
+        $password = $request->password;
+        $telp_petugas = $request->telp_petugas;
+      
+       
         $masyarakat = DB::table('petugas')->insert([
             
-            'nama_petugas' => $nama,
-            'username' => $user,
-            'password' => $pass,
-            'telp' => $telp,
-            'level' => $level
+            'nama_petugas' => $nama_petugas,
+            'username' => $username,
+            'password' => Hash::make ($password),
+            'telp_petugas' => $telp_petugas,
+            
         ]);
 
-        return redirect('/login');
+        return redirect('/logpetugas');
     }
 
     function data_petugas(request $request){
@@ -33,6 +36,27 @@ class PetugasController extends Controller
 
 
     }
+    function halog(){
+        return view ("logpetugas");
+    }
+    function proses_login(request $request){
+        $datalogin = $request->only("username","password");
+        if (Auth::guard("petugas")->attempt($datalogin)){
+            return redirect('/halpetugas');
+        }else{
+            return redirect ('/logpetugas')->with("salah","password salah");
+
+        }
+
+
+
+
+    }
+    function halpetugas(){
+        return view ('halpetugas');
+    }
+
+
 }
 
 

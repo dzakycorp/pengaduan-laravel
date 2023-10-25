@@ -1,41 +1,89 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
- 
-    <link rel="stylesheet" type="text/css" href="css/stylex.css">
- 
-    <title>BUAT AKUN</title>
+    <title>Form Pendaftaran</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:  #033E3E;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .register-container {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            padding: 20px;
+        }
+
+        .register-container h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin: 10px 0;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 375px;
+            height:20px ;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+        }
+
+        .form-group button {
+            width: 100%;
+            background-color:  #033E3E;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color:  #033E3E;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-    <form action="petugas" method="post" >
-                @method("POST")
-                @csrf 
-            <p class="login-text" style="font-size: 2rem; font-weight: 800;">Register</p>
+    <div class="register-container">
+        <h2>DAFTAR PETUGAS</h2>
+        <form action="/petugas" method="post">
+        @method('post')
+        @csrf
+            <div class="form-group">
+                <label for="nama">Nama petugas</label>
+                <input type="text" id="nama_petugas" name="nama_petugas" required>
+            </div>
+            <div class="form-group">
+                <label for="email">username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="telepon">nomor telepon</label>
+                <input type="text" id="telp_petugas" name="telp_petugas" required>
+            </div>
            
-            <div class="input-group">
-                <input type="text" placeholder="nama" name="nama_petugas" required class="form-control" id="floatingInput">
+            <div class="form-group">
+                <button type="submit">Daftar</button>
             </div>
-            <div class="input-group">
-                <input type="text" placeholder="Username" name="username" required class="form-control" id="floatingInput">
-            </div>
-            
-            <div class="input-group">
-                <input type="password" placeholder="Password" name="password" required class="form-control" id="floatingInput">
-            </div>
-            <div class="input-group">
-                <input type="text" placeholder="Telp_petugas" name="telp_petugas" required class="form-control" id="floatingInput">
-            </div>
-            <div class="input-group">
-                <button name="submit" class="btn">Register</button>
-            </div>
-            <p class="login-register-text" align="center"><a href="login.php">Kembali</a></p>
-            <!-- <p class="login-register-text">Anda sudah punya akun? <a href="index.php">Login </a></p> -->
         </form>
     </div>
 </body>
