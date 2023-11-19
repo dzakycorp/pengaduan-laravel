@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\models\Pengaduan;
 class PetugasController extends Controller
 {
+    
     function daftar_petugas(request $request){
 
         $nama_petugas = $request->nama_petugas;
@@ -53,7 +55,17 @@ class PetugasController extends Controller
 
     }
     function halpetugas(){
-        return view ('halpetugas');
+        $pengaduan = pengaduan::All();
+        $pengaduan = DB::table('pengaduan')->get();
+        return view('halpetugas',['pengaduan'=>$pengaduan]);
+
+     
+
+    }
+    function detail_tanggapan($id){
+        $pengaduan = DB::table('pengaduan')->where('id_pengaduan','=', $id )->first();
+        $tanggapan = DB::table('tanggapan')->where('id_pengaduan','=', $id )->first();
+        return view('detail-tanggapan',['pengaduan'=>$pengaduan,'tanggapan'=>$tanggapan]);
     }
 
 

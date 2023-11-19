@@ -28,18 +28,18 @@ class PengaduanController extends Controller
 
     function proses_tambah_pengaduan(Request $request){
         //validasi
-        $nama_foto=$request->foto->getClientoriginalName();
+       
         $request ->validate([
             'isi_laporan' => 'required|min:5'
         ]);
-
+        $nama_foto=$request->foto->getClientoriginalName();
         $request->foto->storeAs('public/image',$nama_foto);
 
 
         $isi_pengaduan = $request->isi_laporan;
         $pengaduan = DB::table('pengaduan')->insert([
             'tgl_pengaduan' => date('Y-m-d'),
-            'nik' => '2',
+            'nik' => '1',
             'isi_laporan' => $isi_pengaduan,
             'foto' => $request->foto->getClientoriginalName(),
             'status' => 'proses'

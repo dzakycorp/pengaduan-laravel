@@ -30,31 +30,33 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <ul class="navbar-nav me">
           <li>
-            <a class="nav-link active" aria-disabled="true" href="/halpetugas" style="font-size: 20px ;"><b style=" color:#FFFF ">Pengaduan</b><span >masyarakat</span></a>
+            <a class="nav-link active" aria-disabled="true" href="/halpetugas" style="font-size: 20px ;"><b style=" color:#FFFF ">halaman</b><span >petugas</span></a>
           </li>
         </ul>
 <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-  {{-- @auth --}}
+  
     <li class="nav-item">
-        <a class="nav-link active" href="/home" tabindex="-1" aria-disabled="true"><b>home</b></a>
+        <a class="nav-link active" href="/halpetugas" tabindex="-1" aria-disabled="true"><b>home</b></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link active" href="/isi_pengaduan" tabindex="-1" aria-disabled="true"><b>buat laporan</b></a>
+        <a class="nav-link active" href="/data-masyarakat"><b>data masyarakat</b></a>
     </li>
-   
+    <li class="nav-item">
+        <a class="nav-link active" href="data-petugas" tabindex="-1" aria-disabled="true"><b>data petugas</b></a>
+    </li>
     <li class="nav-item">
         <a class="nav-link active" href="/logout" tabindex="-1" aria-disabled="true"><b>logout</b></a>
     </li>
-{{-- @endauth --}}
+
 
 </ul>
 
         <ul class="navbar-nav ml-auto">
           <li class="nav-button">
-              <a href="/login" class="btn"  tabindex="-1" aria-disabled="true" style="background-color:#000000; color:white; margin:2px"><b>Login</b></a>          
+              <a href="/logpetugas" class="btn"  tabindex="-1" aria-disabled="true" style="background-color:#000000; color:white; margin:2px"><b>Login</b></a>          
           </li>
           <li class="nav-button">
-              <a href="/register"  class="btn"  tabindex="-1" aria-disabled="true"  style="background-color:#000000; color:white; margin:2px"><b>Register</b></a>
+              <a href="/petugas"  class="btn"  tabindex="-1" aria-disabled="true"  style="background-color:#000000; color:white; margin:2px"><b>Register</b></a>
           </li>
       </ul>
       </div>

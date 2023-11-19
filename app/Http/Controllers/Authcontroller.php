@@ -11,7 +11,7 @@ class Authcontroller extends Controller
 {
     function register()
     {
-        return view('/regis');
+        return view('/regis ');
     }
     function store(Request $request)
     {
@@ -22,6 +22,7 @@ class Authcontroller extends Controller
             'password'=> Hash::make($request->password),
             'telp'=> $request->telp
         ]);
+        return redirect("/login");
     }
         function logout(){
             Auth::logout();

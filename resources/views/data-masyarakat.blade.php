@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="bootstrap-5.3.1-dist/css/bootstrap.min.css">
 </head>
 <body>
-    @include('layout.navbar')
+    @include('layout.navpetugas')
     <div class="container">
         <br><br>
        <h2 style="text-align: center">{{$df}}</h2>
